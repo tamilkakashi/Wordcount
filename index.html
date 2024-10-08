@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function findRepeatedWords(text) {
+            const words = text.toLowerCase().match(/\b\w+\b/g);
+            const wordCount = {};
+            words.forEach(word => {
+                if (wordCount[word])
+                 {
+                    wordCount[word]++;
+                } 
+                else
+                 {
+                    wordCount[word] = 1;
+                }
+            });
+            const repeatedWords = {};
+            for (const [word, count] of Object.entries(wordCount)) {
+                if (count > 1) {
+                    repeatedWords[word] = count;
+                }
+            }
+        
+            return repeatedWords;
+        }
+        const text = "This is a test. This test is only a test." ;
+        const result = findRepeatedWords(text);
+        console.log(result); 
+    </script>
+</body>
+</html>
